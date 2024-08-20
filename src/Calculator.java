@@ -12,6 +12,9 @@ public class Calculator implements ActionListener {
     JButton[] func = new JButton[8];
     JButton[] nums = new JButton[10];
 
+    Double num1, num2, result;
+    Character op;
+
 
     Font myFont = new Font("Algerian", Font.TRUETYPE_FONT, 30);
     public Calculator() {
@@ -102,6 +105,59 @@ public class Calculator implements ActionListener {
             textField.setText(textField.getText().concat("."));
         }
 
+        if(e.getSource() == buttonAdd){
+            num1 = Double.parseDouble(textField.getText());
+            op = '+';
+            textField.setText("");
+        }
+
+        if(e.getSource() == buttonSub){
+            num1 = Double.parseDouble(textField.getText());
+            op = '-';
+            textField.setText("");
+        }
+
+        if(e.getSource() == buttonMul){
+            num1 = Double.parseDouble(textField.getText());
+            op = '*';
+            textField.setText("");
+        }
+
+        if(e.getSource() == buttonDiv){
+            num1 = Double.parseDouble(textField.getText());
+            op = '/';
+            textField.setText("");
+        }
+
+        if(e.getSource() == buttonEqu) {
+            num2 = Double.parseDouble(textField.getText());
+
+            switch (op) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+            }
+
+            textField.setText(String.valueOf(result));
+            num1 = result;
+        }
+
+        if(e.getSource() == buttonClr){
+            textField.setText("");
+        }
+
+        if(e.getSource() == buttonDel){
+            textField.setText(textField.getText().substring(0,textField.getText().length()-1));
+        }
 
     }
 }
